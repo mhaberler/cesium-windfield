@@ -39,7 +39,9 @@
   "dependencies": {
     "@cesium-extends/compass": "^1.2.2",
     "@cesium-extends/zoom-control": "^1.2.2",
-    "cesium": "^1.139.1"
+    "cesium": "^1.139.1",
+    "colormap": "^2.3.2",
+    "geographiclib": "^1.52.2"
   },
   "lint-staged": {
     "*.js": [
