@@ -23,16 +23,20 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "eslint": "eslint \"./**/*.js\" --cache --quiet",
+    "typecheck": "tsc --noEmit",
+    "eslint": "eslint \"./**/*.{ts,js}\" --cache --quiet",
     "prettier": "prettier --write --no-config \"**/*\"",
     "prettier-check": "prettier --check --no-config \"**/*\""
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
     "eslint": "^10.1.0",
     "eslint-config-cesium": "^11.0.1",
     "eslint-plugin-es": "^4.1.0",
     "eslint-plugin-html": "^8.1.4",
     "prettier": "^3.8.1",
+    "typescript": "^6.0.2",
     "vite": "^8.0.3",
     "vite-plugin-static-copy": "^4.0.0"
   },
@@ -44,7 +48,7 @@
     "geographiclib": "^1.52.2"
   },
   "lint-staged": {
-    "*.js": [
+    "*.{ts,js}": [
       "eslint --cache --quiet",
       "prettier --write --no-config"
     ],

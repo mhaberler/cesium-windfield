@@ -1,10 +1,13 @@
 /**
  * Serializes a JavaScript object to a JSON string and triggers a browser download.
  *
- * @param {object} objectToSerialize The JavaScript object to serialize and download.
- * @param {string} filename The desired filename for the downloaded file (e.g., "data.json").
+ * @param objectToSerialize The JavaScript object to serialize and download.
+ * @param filename The desired filename for the downloaded file (e.g., "data.json").
  */
-function downloadObjectAsJson(objectToSerialize, filename) {
+export function downloadObjectAsJson(
+  objectToSerialize: object,
+  filename: string,
+): void {
   if (!objectToSerialize || typeof objectToSerialize !== "object") {
     console.error("Error: Invalid object provided for download.");
     return;
@@ -15,9 +18,6 @@ function downloadObjectAsJson(objectToSerialize, filename) {
     );
     filename = "download.json";
   }
-  // if (!filename.toLowerCase().endsWith('.json')) {
-  //   filename += '.json';
-  // }
   try {
     const jsonString = JSON.stringify(objectToSerialize, null, 2);
     const blob = new Blob([jsonString], { type: "application/json" });
@@ -34,6 +34,3 @@ function downloadObjectAsJson(objectToSerialize, filename) {
     console.error("Error during JSON serialization or download:", error);
   }
 }
-
-// Export the function directly
-export { downloadObjectAsJson };

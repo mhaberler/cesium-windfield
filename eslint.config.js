@@ -1,4 +1,7 @@
 import js from "@eslint/js";
+import tsParser from "@typescript-eslint/parser";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import globals from "globals";
 
 export default [
   {
@@ -7,40 +10,37 @@ export default [
       "dist/",
       ".git/",
       "public/",
-      "*.config.js",
       "**/*.config.js",
+      "**/*.config.ts",
     ],
   },
   {
-    files: ["**/*.js"],
+    files: ["**/*.{ts,js}"],
     languageOptions: {
+      parser: tsParser,
       ecmaVersion: 2020,
       sourceType: "module",
       globals: {
-        console: "readonly",
-        window: "readonly",
-        document: "readonly",
-        navigator: "readonly",
-        fetch: "readonly",
-        Blob: "readonly",
-        URL: "readonly",
-        URLSearchParams: "readonly",
-        FormData: "readonly",
-        File: "readonly",
-        FileReader: "readonly",
-        Uint8Array: "readonly",
-        ArrayBuffer: "readonly",
+        ...globals.browser,
+        ...globals.es2020,
       },
+    },
+    plugins: {
+      "@typescript-eslint": tsPlugin,
     },
     rules: {
       ...js.configs.recommended.rules,
-      "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+      ...tsPlugin.configs.recommended.rules,
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_" },
+      ],
+      "@typescript-eslint/no-explicit-any": "warn",
     },
   },
   {
     files: ["**/*.html"],
-    rules: {
-      // Skip HTML files - they would need special parser
-    },
+    rules: {},
   },
 ];
