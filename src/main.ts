@@ -76,8 +76,7 @@ const {
 
 let selectedTerrain = 1;
 
-Ion.defaultAccessToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3YmJlMzAyYy1hZTY4LTQ4OTUtYTIxMS02NTBlYzc1MDcxNTAiLCJpZCI6MTQ0MjAsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NjU0NzE5Mzl9.j9eQVA5txZG-lRmcUBEwgzRuAWzd0fPxgf5LmM_xNLU";
+Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_ION_TOKEN;
 
 let imageryProvider: TileMapServiceImageryProvider | undefined;
 if (defined(endUserOptions.tmsImageryUrl)) {
